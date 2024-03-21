@@ -1,10 +1,10 @@
 #include<stdio.h>
-int sum(int);
+int reverse(int);
 main()
 {
     FILE *ptr;
-    ptr=fopen("sumofdigits.txt","w");
-    int n,s;
+    ptr=fopen("reverse.txt","w");
+    int n,res;
     if(ptr==NULL)
     {
         printf("Error in the file opening\n");
@@ -13,19 +13,19 @@ main()
     printf("Enter the number\n");
     scanf("%d",&n);
     if(n>0)
-    s=sum(n);
-    fprintf(ptr,"SUM = %d",s);
+    res=reverse(n);
+    fprintf(ptr,"Number after reversing = %d",res);
     fclose(ptr);
-    printf("The reult is stored in sumofdigits file\n");
+    printf("The reult is stored in reverse file\n");
 }
-int sum(int n)
+int reverse(int n)
 {
-    int ld,s=0;
+    int ld,res=0;
     while(n!=0)
     {
         ld=n%10;
-        s=s+ld;
+        res=res*10+ld;
         n=n/10;
     }
-    return s;
+    return res;
 }
