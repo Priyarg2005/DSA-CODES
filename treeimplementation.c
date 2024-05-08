@@ -6,7 +6,6 @@ struct node
     int data;
     struct node *left,*right;
 };
-struct node *deletenode(struct node *root,int key);
 struct node *newnode(int data)
 {
     struct node *node;
@@ -37,7 +36,6 @@ void print2D(struct node *root)
 }
 int main()
 {
-    int l;
     struct node *root = newnode(1);
     root->left = newnode(2);
     root->right = newnode(3);
@@ -54,43 +52,6 @@ int main()
     root->right->right->left = newnode(14);
     root->right->right->right = newnode(15);
     print2D(root);
-    printf("\n\nEnter a node to delete\n");
-    scanf("%d",&l);
-    root = deletenode(root,l);
-    print2D(root);
+
     return 0;
 }
-struct node *deletenode(struct node *root,int key)
-{
-  if(root==NULL)
-    {
-        return root;
-    }
-    if(key <root->data)
-    {
-        root->left = deletenode(root->left,key);
-    }
-    else if(key > root->data)
-    {
-        root->right = deletenode(root->right,key);
-    }
-    else
-    {
-        if(root->left == NULL)
-        {
-            struct node *temp = root->right;
-            free(root);
-            return temp;
-        }
-        else if(root->right==NULL)
-        {
-           struct node *temp = root->left;
-           free(root);
-           return temp;
-        }
-    }
-    return root;
-}
-
-
-
